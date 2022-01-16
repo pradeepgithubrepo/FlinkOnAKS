@@ -1,0 +1,49 @@
+
+kubeRG
+
+pradk8cluster
+
+pradacr
+
+*********************AKS************************
+
+1. az aks get-credentials --resource-group kubeRG --name pradk8cluster
+2. kubectl get nodes
+3. kubectl get namespace
+4. kubectl create namespace ratingapp
+5. kubectl create -f azure-aks.yaml
+
+
+6. kubectl describe secret mongosecret --namespace ratingapp
+
+kubectl get pods --all-namespaces
+
+
+
+***********************Python**************************
+docker build .
+docker images
+docker tag <UID> <Actualname:Tag>
+
+docker run -d -p 80:5000 mypythonapp:latest
+(host port : container port)
+
+docker ps
+
+
+*****ACR*****
+1. az acr login -n pradacr 
+
+2. ACR has to follow a format --> reg/repo:tag
+   pradacr.azurecr.io/mypythonapp:latest
+   docker tag pycharger:v1 pradacr.azurecr.io/pycharger:v1
+   
+3. docker push pradacr.azurecr.io/mypythonapp:latest
+
+4.	Build using ACR without docker
+	az acr build --registry pradacr --image rating-web:v1 .
+	az acr build --registry pradacr --image rating-api:v1 .
+
+
+
+kubectl port-forward flink-j 8081:8081
