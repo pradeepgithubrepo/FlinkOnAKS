@@ -47,3 +47,46 @@ docker ps
 
 
 kubectl port-forward flink-j 8081:8081
+
+
+C:\Users\KR827EH\OneDrive - EY\Desktop\Learning\aksdocker\flink>kubectl delete -f jobmanager-service.yaml
+service "flink-jobmanager" deleted
+
+C:\Users\KR827EH\OneDrive - EY\Desktop\Learning\aksdocker\flink>kubectl delete -f flink-configuration-configmap.yaml
+configmap "flink-config" deleted
+
+C:\Users\KR827EH\OneDrive - EY\Desktop\Learning\aksdocker\flink>kubectl delete -f taskmanager-session-deployment.yaml
+deployment.apps "flink-taskmanager" deleted
+
+C:\Users\KR827EH\OneDrive - EY\Desktop\Learning\aksdocker\flink>kubectl delete -f jobmanager-session-deployment.yaml
+deployment.apps "flink-jobmanager" deleted
+
+C:\Users\KR827EH\OneDrive - EY\Desktop\Learning\aksdocker\flink>kubectl create -f flink-configuration-configmap.yaml
+configmap/flink-config created
+
+C:\Users\KR827EH\OneDrive - EY\Desktop\Learning\aksdocker\flink>kubectl create -f jobmanager-service.yaml
+service/flink-jobmanager created
+
+C:\Users\KR827EH\OneDrive - EY\Desktop\Learning\aksdocker\flink>kubectl create -f jobmanager-session-deployment.yaml
+deployment.apps/flink-jobmanager created
+
+C:\Users\KR827EH\OneDrive - EY\Desktop\Learning\aksdocker\flink>kubectl create -f taskmanager-session-deployment.yaml
+deployment.apps/flink-taskmanager created
+
+C:\Users\KR827EH\OneDrive - EY\Desktop\Learning\aksdocker\flink>kubectl get pods
+NAME                                 READY   STATUS    RESTARTS   AGE
+flink-jobmanager-577bdb85dc-67fkn    1/1     Running   0          7s
+flink-taskmanager-68647695dc-spqrp   1/1     Running   0          4s
+flink-taskmanager-68647695dc-xhrj6   1/1     Running   0          4s
+
+C:\Users\KR827EH\OneDrive - EY\Desktop\Learning\aksdocker\flink>kubectl port-forward flink-jobmanager-577bdb85dc-67fkn 8081:8081
+Forwarding from 127.0.0.1:8081 -> 8081
+Forwarding from [::1]:8081 -> 8081
+Handling connection for 8081
+Handling connection for 8081
+Handling connection for 8081
+Handling connection for 8081
+Handling connection for 8081
+Handling connection for 8081
+Handling connection for 8081
+E0112 18:32:18.468075   28776 portforward.go:233] lost connection to pod
