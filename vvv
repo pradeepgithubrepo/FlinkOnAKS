@@ -1,0 +1,108 @@
+Freshers
+1.	Tell me about yourself.
+Array [12 , 5 , 6 , 8 , 2 ,  3 , 19]
+1.	Search 19 is the search key – Approach
+2.	Sort it 
+3.	Array [12 , 5 , 6 , 8 , 2 ,  3 , 19,12] – remove duplicate
+4.	List Vs Array
+5.	Linked List 
+SQL
++----+-------+--------+-----------+
+| Id | Name  | Salary | ManagerId |
++----+-------+--------+-----------+
+| 1  | Joe   | 70000  | 3         |
+| 2  | Henry | 80000  | 4         |
+| 3  | Sam   | 60000  | NULL      |
+| 4  | Max   | 90000  | NULL      |
++----+-------+--------+-----------+
+
+query that finds out employees who earn more than their managers.
+
+SELECT e1.name FROM Employee e1 JOIN Employee e2 ON e1.ManagerId = e2.Id WHERE e1.salary > e2.salary
+
+
+Python
+1.	Find the count for the occurrence of a particular character in a string.
+2.	Array [12 , 5 , 6 , 8 , 2 ,  3 , 19,12] – remove duplicate.
+3.	Create a function that takes an array of numbers and return both the minimum and maximum numbers, in that order.
+4.	list of repeated elements. You have to find the maximum distance between two same elements. The answer will be zero if there are no repeated elements.
+
+Programs
+1.	order file --> order id , customer id , order date , order amount, ..etc
+customer file -> customer id , customer name , customer mobile num , customer address.
+List of customer name and mobile number who made an order today.
+
+2.	100,ABC1,08-09-2021 11:00, 210
+120,ABC1,08-09-2021 13:00, 10
+145,ABC1,08-09-2021 19:00, 55
+
+3.	UDF
+df --> 10 one of the cloumns is country
+List("US",
+	  "USa",
+	  "USA",
+	  "United states",
+	  "United states of America")
+def cleancountry = (country : String)=>{
+	  val countrylist = List("US",
+	  "USa",
+	  "USA",
+	  "United states",
+	  "United states of America")
+	  if (countrylist.contains(country)) "USA" else "Don't Know that"
+	}
+	  sparkses.udf.register("cleancountryudf",cleancountry)
+	  userData.createOrReplaceTempView("userdata")
+	  val userdatadf = sparkses.sql("select * , cleancountryudf(country) from userdata")
+	  userdatadf.show
+
+4.	An organization has got 1 million employees and we need to do a expense analysis.
+Emp ID	Date 	Expense
+1	1-Jan-2021	750
+2	1-Jan-2021	600
+3	1-Jan-2021	800
+4	1-Jan-2021	1000
+1	1-Feb-2021	750
+2	1-Feb-2021	800
+3	1-Feb-2021	700
+
+Count of employees for whom the expense has increased from previous month.
++-------------+----------+------+
+|employee_name|department|salary|
++-------------+----------+------+
+|        James|     Sales|  3000|
+|      Michael|     Sales|  4600|
+|       Robert|     Sales|  4100|
+|        Maria|   Finance|  3000|
+|        James|     Sales|  3000|
+|        Scott|   Finance|  3300|
+|          Jen|   Finance|  3900|
+|         Jeff| Marketing|  3000|
+|        Kumar| Marketing|  2000|
+|         Saif|     Sales|  4100|
++-------------+----------+------+
+
+Collect as a list 
+
+1 DF with 10 million records not able to push how will you push 
+Spark Interview Questions
+1.	Catalyst Optimizer in Spark ?
+2.	Purpose of caching in Spark ? Various caching levels in Spark.
+3.	How do you implement error and audit logging in Spark ?
+4.	What is schema evolution in Spark ?
+5.	Spark session Vs Spark Context ? -> Which one takes higher precedence ? 
+6.	Broadcast variables in Spark.
+7.	Accumulators in Spark.
+8.	Join Strategies in Spark 
+
+
+Streaming 
+Usage of sliding window Operation – RDD within a window is computed and aggregated.
+Dstream Vs Structed Stream difference ? 
+
+ADF
+•	I want to create a pipeline in ADF that performs CDC , it should have a raw layer, staging layer and consumption layer.
+•	Incrementally upsert data.
+•	Mutually exclusive pipeline
+
+
